@@ -1,6 +1,6 @@
 ---
 - name: sample playbook
-  hosts: all
+- hosts: all
   tasks:
     - name: install apache2
       apt:
