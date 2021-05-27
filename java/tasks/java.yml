@@ -1,5 +1,0 @@
----
-- name: install java
-  apt:
-    name: default-jdk
-    state: latest
