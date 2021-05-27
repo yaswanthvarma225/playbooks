@@ -78,8 +78,6 @@
       mode: 0755
 
   - name: enable tomcat startup
-    systemctl:
-      name: tomcat.service
-      enabled: yes
-      state: restarted
-      become: true
+    systemd:
+      name: tomcat
+      state: started
