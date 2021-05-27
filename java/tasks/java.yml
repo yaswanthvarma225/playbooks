@@ -1,0 +1,10 @@
+---
+- name: update
+  apt:
+    name: update
+    state: present
+
+- name: install java
+  apt:
+    name: default-jdk
+    state: latest
