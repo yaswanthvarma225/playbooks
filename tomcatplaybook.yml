@@ -51,6 +51,7 @@
     file:
       path: /etc/systemd/system/tomcat.service
       state: touch
+      
   - name: edit tomcat.service
     blockinfile:
     dest: /etc/systemd/system/tomcat.service
