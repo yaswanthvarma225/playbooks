@@ -79,7 +79,7 @@
 
   - name: edit tomcat-users.xml
     blockinfile:
-      dest: /usr/local/apache-tomcat-9.0.37/conf/tomcat-users.xml
+      dest: /opt/tomcat/apache-tomcat-9.0.37/conf/tomcat-users.xml
       insertafter: <tomcat-users>
       block: |
         <role rolename = "admin-gui" />
