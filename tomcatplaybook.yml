@@ -51,7 +51,7 @@
     copy:
        src: tomcat.service
        dest: /etc/systemd/system/
-       mode: 0755
+       mode: 755
 
   - name: Start and enable Tomcat service
     systemd:
