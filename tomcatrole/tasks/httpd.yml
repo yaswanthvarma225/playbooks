@@ -1,6 +1,4 @@
 ---
-# tasks file for tomcatrole.yml---
-# tasks file for tomcatrole
 - name: install apache
   apt:
     name: apache2
