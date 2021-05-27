@@ -1,2 +1,6 @@
 ---
-# handlers file for tomcatrole
+# handlers file for tomcatrole- name: start nginx
+- name: start nginx
+  service:
+    name: nginx
+    state: started
