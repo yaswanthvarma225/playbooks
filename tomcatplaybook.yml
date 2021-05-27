@@ -77,9 +77,19 @@
       path: /etc/systemd/system/tomcat.service
       mode: 0755
 
-  - name: Start and enable Tomcat service
+  - name: edit tomcat-users.xml
+    blockinfile:
+      dest: /usr/local/apache-tomcat-7.0.76/conf/tomcat-users.xml
+      insertafter: <tomcat-users>
+      block: |
+        <role rolename = "admin-gui" />
+        <role rolename = "manager-gui" />
+        <user username = "tomcat" password = "P @ ssw0rd123" roles = "admin-gui, manager-gui" />
+    
+  - name: start tomcat
     systemd:
-      name: tomcat
+      name: tomcat.service
       state: started
-      enabled: true
-      daemon_reload: true
+      daemon_reload: yes
+      enabled: yes
+      become: yes
