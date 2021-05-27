@@ -77,15 +77,6 @@
       path: /etc/systemd/system/tomcat.service
       mode: 0755
 
-  - name: edit tomcat-users.xml
-    blockinfile:
-      dest: /opt/tomcat/apache-tomcat-9.0.37/conf/tomcat-users.xml
-      insertafter: <tomcat-users>
-      block: |
-        <role rolename = "admin-gui" />
-        <role rolename = "manager-gui" />
-        <user username = "tomcat" password = "password" roles = "admin-gui, manager-gui" />
-    
   - name: start tomcat
     systemd:
       name: tomcat.service
