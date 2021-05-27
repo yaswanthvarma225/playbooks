@@ -77,7 +77,9 @@
       path: /etc/systemd/system/tomcat.service
       mode: 0755
 
-  - name: start tomcat
-    service:
-      name: tomcat.service
+  - name: Start and enable Tomcat service
+    systemd:
+      name: tomcat
       state: started
+      enabled: true
+      daemon_reload: true
