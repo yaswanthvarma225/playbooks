@@ -78,7 +78,7 @@
       mode: 0755
 
   - name: start tomcat
-    systemd:
+    service:
       name: tomcat.service
       state: started
       daemon_reload: yes
