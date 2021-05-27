@@ -46,12 +46,34 @@
       mode: "u+rwx,g+rx,o=rx"
       recurse: yes
       state: directory
-      
-  - name: Copy Tomcat service from local to remote
-    copy:
-       src: tomcat.service
-       dest: /etc/systemd/system/
-       mode: 0755
+
+  -name: make tomcat.service
+      file:
+        path =/etc/systemd/system/tomcat.service
+        state = touch
+    -name: edit tomcat.service
+      blockinfile:
+        dest: /etc/systemd/system/tomcat.service
+        insertafter:
+        block: |
+          [Unit]
+          Description = Apache Tomcat 9
+          After = syslog.target network.target
+          [Service]
+          User = tomcat
+          Group = tomcat
+          Type = oneshot
+          PIDFile =/usr/local/apache-tomcat-9.0.37/tomcat.pid
+          RemainAfterExit = yes
+          ExecStart =/usr/local/apache-tomcat-9.0.37/bin/startup.sh
+          ExecStop =/usr/local/apache-tomcat-9.0.37/bin/shutdown.sh
+          ExecReStart =/usr/local/apache-tomcat-9.0.37/bin/shutdown.sh;/usr/local/apache-tomcat-9.0.37/bin/startup.sh
+          [Install]
+          WantedBy = multi-user.target
+    -name: chmod 755 tomcat.service
+      file:
+        path =/etc/systemd/system/tomcat.service
+        mode = 0755
 
   - name: Start and enable Tomcat service
     systemd:
