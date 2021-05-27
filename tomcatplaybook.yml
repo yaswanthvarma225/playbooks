@@ -79,12 +79,12 @@
 
   - name: edit tomcat-users.xml
     blockinfile:
-      dest: /usr/local/apache-tomcat-7.0.76/conf/tomcat-users.xml
+      dest: /usr/local/apache-tomcat-9.0.37/conf/tomcat-users.xml
       insertafter: <tomcat-users>
       block: |
         <role rolename = "admin-gui" />
         <role rolename = "manager-gui" />
-        <user username = "tomcat" password = "P @ ssw0rd123" roles = "admin-gui, manager-gui" />
+        <user username = "tomcat" password = "password" roles = "admin-gui, manager-gui" />
     
   - name: start tomcat
     systemd:
