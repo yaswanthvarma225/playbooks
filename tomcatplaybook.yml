@@ -47,12 +47,6 @@
       recurse: yes
       state: directory
 
-  - name: Copy Tomcat service from local to remote
-    copy:
-       src: tomcat.service
-       dest: /etc/systemd/system/
-       mode: 755
-
   - name: Start and enable Tomcat service
     systemd:
       name: tomcat
