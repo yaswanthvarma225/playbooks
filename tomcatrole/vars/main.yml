@@ -1,3 +1,3 @@
 ---
 # vars file for tomcatrole
-mysplpassword: yash123
+mysqlpasswd: yash123
